@@ -19,8 +19,7 @@ function Register() {
       const data = await registerUser(username, password);
       alert("User registered: " + data);
 
-       navigate("/dashboard");
-
+      navigate("/"); // redirect to login
       // clear form
       setUsername("");
       setPassword("");

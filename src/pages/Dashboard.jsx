@@ -1,30 +1,23 @@
-import React, { useState } from "react";
-import StudentForm from "./StudentForm";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
-  const [students, setStudents] = useState([]);
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // This is your handleData (real version)
-  const handleAddStudent = (name) => {
-    console.log("Received from child:", name);
-
-    // update state (real project logic)
-    setStudents([...students, name]);
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
   };
 
   return (
     <div>
-      <h2>Student Dashboard</h2>
+      <h2>Dashboard</h2>
+      <p>Token: {token}</p>
 
-      {/* Passing function to child */}
-      <StudentForm onAddStudent={handleAddStudent} />
-
-      <h3>Student List:</h3>
-      <ul>
-        {students.map((student, index) => (
-          <li key={index}>{student}</li>
-        ))}
-      </ul>
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 }
