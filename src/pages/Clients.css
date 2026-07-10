@@ -1,0 +1,79 @@
+/* =============================================
+   CLIENTS DIRECTORY STYLES
+   ============================================= */
+
+.clients-header {
+  margin-bottom: var(--space-8);
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+.client-profile-card {
+  min-height: 260px;
+}
+
+.client-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-gold-glow);
+  color: var(--color-gold);
+  border: 1px solid var(--color-border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--text-lg);
+}
+
+.client-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.client-delete-btn:hover {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+.client-name-title {
+  font-size: var(--text-base);
+  margin-top: var(--space-4);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.client-details-list {
+  margin-top: var(--space-3);
+}
+
+.client-detail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.client-card-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.client-case-count {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}

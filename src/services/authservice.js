@@ -1,6 +1,5 @@
-import BASE_URL from "./api";
+import BASE_URL, { parseApiResponse } from "./api";
 
-// Register API
 export const registerUser = async (username, password) => {
   const res = await fetch(`${BASE_URL}/auth/register`, {
     method: "POST",
@@ -10,10 +9,9 @@ export const registerUser = async (username, password) => {
     body: JSON.stringify({ username, password }),
   });
 
-  return res.text();
+  return parseApiResponse(res);
 };
 
-// Login API
 export const loginUser = async (username, password) => {
   const res = await fetch(`${BASE_URL}/auth/login`, {
     method: "POST",
@@ -23,5 +21,5 @@ export const loginUser = async (username, password) => {
     body: JSON.stringify({ username, password }),
   });
 
-  return res.json();
+  return parseApiResponse(res);
 };

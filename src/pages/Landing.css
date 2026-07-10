@@ -1,0 +1,103 @@
+:root{
+  --landing-bg: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.landing-hero{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--landing-bg);
+  padding: var(--space-8, 40px);
+}
+
+.landing-hero__container{
+  display: flex;
+  gap: 48px;
+  width: 100%;
+  max-width: 1100px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-hero__content{
+  flex: 1.1;
+  max-width: 640px;
+}
+
+.landing-badge{
+  display: inline-block;
+  background: rgba(34,37,41,0.06);
+  color: #1f2937;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.landing-title{
+  font-size: 38px;
+  margin: 0 0 16px 0;
+  color: var(--color-text-primary, #0f172a);
+  line-height: 1.05;
+}
+
+.landing-subtitle{
+  color: var(--color-text-muted, #475569);
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.landing-cta{ display:flex; gap:12px; margin-bottom:18px; }
+
+.landing-features{
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-secondary, #334155);
+}
+
+.landing-features li{
+  margin-bottom: 8px;
+}
+
+.landing-hero__visual{
+  flex: 0.9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.mock-device{
+  width: 320px;
+  height: 420px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.mock-device__screen{
+  width: 88%;
+  height: 82%;
+  background: linear-gradient(180deg, #eef2ff 0%, #fff 100%);
+  border-radius: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: #0f172a;
+  font-weight:600;
+}
+
+@media (max-width: 900px){
+  .landing-hero__container{ flex-direction:column-reverse; gap:20px; align-items:center; }
+  .landing-hero__visual{ order: -1; }
+  .landing-title{ font-size:28px; text-align:center }
+  .landing-subtitle{ text-align:center }
+  .landing-cta{ justify-content:center }
+  .landing-features{ text-align:center }
+  .mock-device{ width:260px; height:340px }
+}

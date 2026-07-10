@@ -1,0 +1,176 @@
+/* =============================================
+   DASHBOARD PAGES STYLES
+   ============================================= */
+
+.dashboard-header {
+  margin-bottom: var(--space-8);
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+/* Stats Row */
+.dashboard-grid--stats {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+}
+
+.stats-card__title {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stats-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+}
+
+.stats-card__icon--blue { background: hsla(214, 95%, 65%, 0.12); color: var(--color-blue); }
+.stats-card__icon--gold { background: var(--color-gold-glow); color: var(--color-gold); }
+.stats-card__icon--success { background: var(--color-success-bg); color: var(--color-success); }
+.stats-card__icon--warning { background: var(--color-warning-bg); color: var(--color-warning); }
+
+.stats-card__value {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: var(--space-2) 0;
+  font-family: var(--font-sans);
+}
+
+.stats-card__trend {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.trend-up {
+  color: var(--color-success);
+}
+
+/* Main Layout Grid */
+.dashboard-grid--main {
+  grid-template-columns: 2fr 1fr;
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid--main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Column Wrappers */
+.dashboard-column {
+  min-height: 340px;
+}
+
+/* Hearing List */
+.hearing-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.hearing-item {
+  padding: var(--space-4);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.hearing-item:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-border-strong);
+}
+
+.hearing-item__title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.hearing-item__meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.hearing-item__time {
+  color: var(--color-gold);
+}
+
+.hearing-item__btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.hearing-item__btn:hover {
+  color: var(--color-gold);
+}
+
+/* Recharts Pie Custom Styling */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.chart-legends {
+  padding: 0 var(--space-2);
+}
+
+.chart-legend-item {
+  font-size: var(--text-xs);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-label {
+  color: var(--color-text-secondary);
+}
+
+.legend-value {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-12) 0;
+  font-size: var(--text-sm);
+}
+
+.bar-chart-container {
+  overflow-x: auto;
+}

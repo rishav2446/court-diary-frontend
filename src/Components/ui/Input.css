@@ -1,0 +1,168 @@
+/* =============================================
+   INPUT COMPONENT STYLES
+   ============================================= */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Core Input Field ---- */
+.input__field {
+  width: 100%;
+  height: 50px;
+  padding: 16px 44px 4px 14px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-family: var(--font-sans);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition:
+    border-color var(--transition-base),
+    background var(--transition-base),
+    box-shadow var(--transition-base);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.input__field:hover:not(:disabled) {
+  border-color: var(--color-gold);
+  background: var(--color-bg-card);
+}
+
+.input__field:focus {
+  border-color: var(--color-gold);
+  background: var(--color-bg-card);
+  box-shadow: 0 0 0 4px var(--color-gold-glow), 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.input__field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* With left icon: extra left padding */
+.input-wrapper--has-icon .input__field {
+  padding-left: 40px;
+}
+
+/* ---- Floating Label ---- */
+.input__label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: all var(--transition-base);
+  transform-origin: left center;
+  white-space: nowrap;
+}
+
+/* Floating state: label moves up */
+.input__label--floating,
+.input__field:focus ~ .input__label,
+.input__field:not(:placeholder-shown) ~ .input__label,
+.input__field:-webkit-autofill ~ .input__label {
+  transform: translateY(-18px) scale(0.8);
+  color: var(--color-gold);
+}
+
+/* Hide placeholder text when input is not focused to prevent overlapping with the centered label */
+.input__field:not(:focus)::placeholder {
+  color: transparent;
+  opacity: 0;
+}
+
+.input-wrapper--has-icon .input__label {
+  left: 44px;
+}
+
+.input__required { color: var(--color-danger); }
+
+/* ---- Focus Line Indicator ---- */
+.input__focus-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  transition:
+    left var(--transition-base),
+    right var(--transition-base);
+  pointer-events: none;
+}
+
+.input-wrapper--focused .input__focus-line {
+  left: 0;
+  right: 0;
+}
+
+/* ---- Left Icon ---- */
+.input__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: color var(--transition-base);
+  display: flex;
+  align-items: center;
+}
+.input__icon--left { left: 14px; }
+.input-wrapper--focused .input__icon--left { color: var(--color-gold); }
+
+/* ---- Right Actions (toggle, status) ---- */
+.input__right-actions {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.input__toggle-password {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-fast);
+}
+.input__toggle-password:hover { color: var(--color-text-primary); }
+
+.input__status-icon { flex-shrink: 0; }
+.input__status-icon--error   { color: var(--color-danger); }
+.input__status-icon--success { color: var(--color-success); }
+
+/* ---- Error / Success Borders ---- */
+.input-wrapper--error .input__field {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px var(--color-danger-bg);
+}
+.input-wrapper--error .input__label--floating { color: var(--color-danger); }
+
+.input-wrapper--success .input__field {
+  border-color: var(--color-success);
+}
+.input-wrapper--success .input__label--floating { color: var(--color-success); }
+
+/* ---- Messages ---- */
+.input__message {
+  font-size: var(--text-xs);
+  margin-top: var(--space-1);
+  padding-left: var(--space-1);
+  animation: fadeInUp 0.2s ease;
+}
+.input__message--error { color: var(--color-danger); }
+.input__message--hint  { color: var(--color-text-muted); }

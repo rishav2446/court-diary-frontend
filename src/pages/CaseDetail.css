@@ -1,0 +1,286 @@
+/* =============================================
+   CASE DETAILS PAGE STYLES
+   ============================================= */
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-6);
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.back-btn:hover {
+  color: var(--color-gold);
+}
+
+.casedetail-header {
+  margin-bottom: var(--space-8);
+}
+
+.case-badge-number {
+  background: var(--color-bg-secondary);
+  color: var(--color-gold);
+  border: 1px solid var(--color-border-gold);
+  padding: 4px var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+.case-main-title {
+  color: var(--color-text-primary);
+}
+
+.case-court-subtext {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-top: 4px;
+}
+
+/* Layout Grid Split */
+.casedetail-grid {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  gap: var(--space-8);
+}
+
+@media (max-width: 992px) {
+  .casedetail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Side Specifications */
+.spec-list {
+  list-style: none;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.spec-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.spec-val {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* Workspace Tabs menu */
+.workspace-tabs {
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-4);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tab-toggle {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-secondary);
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab-toggle:hover {
+  color: var(--color-text-primary);
+}
+
+.tab-toggle--active {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
+}
+
+.section-heading {
+  font-size: var(--text-base);
+  margin-bottom: var(--space-4);
+  color: var(--color-text-primary);
+  border-left: 3px solid var(--color-gold);
+  padding-left: var(--space-2);
+}
+
+/* Overview Tab */
+.case-desc-para {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+}
+
+.next-hearing-alert {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+}
+
+.calendar-icon-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: var(--color-gold-glow);
+  color: var(--color-gold);
+}
+
+.next-hearing-alert h4 {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+.next-hearing-alert p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Hearings Timeline */
+.timeline-trail {
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.timeline-trail::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--color-border-strong);
+}
+
+.timeline-node {
+  position: relative;
+}
+
+.timeline-node::before {
+  content: '';
+  position: absolute;
+  left: -19px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-gold);
+}
+
+.timeline-node__date {
+  font-size: var(--text-xs);
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.timeline-node__content {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.timeline-node__content h4 {
+  font-size: var(--text-sm);
+  margin-bottom: 2px;
+}
+
+.timeline-node__bench {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.timeline-node__result {
+  font-size: var(--text-xs);
+  margin-top: var(--space-2);
+  color: var(--color-text-secondary);
+}
+
+/* Documents tab */
+.doc-item {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.doc-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: hsla(214, 95%, 65%, 0.12);
+  color: var(--color-blue);
+}
+
+.doc-name {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.doc-size {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Notes Tab */
+.note-form__input {
+  flex: 1;
+  height: 42px;
+  padding: 0 var(--space-4);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+}
+
+.note-form__input:focus {
+  border-color: var(--color-gold);
+}
+
+.note-card {
+  padding: var(--space-4);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.note-card__header {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.note-card__author {
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+.note-card__text {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}

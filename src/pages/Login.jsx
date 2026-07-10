@@ -1,69 +1,110 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../features/auth/authSlice";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../services/authservice";
-
+import { useAuth } from "../hooks/useAuth";
+import { useToast } from "../hooks/useToast";
+import AuthLayout from "../layouts/AuthLayout";
+import Input from "../Components/ui/Input";
+import Button from "../Components/ui/Button";
+import Card from "../Components/ui/Card";
+import { FiUser, FiLock } from "react-icons/fi";
+import "./Login.css";
 
 function Login() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { login, isLoading } = useAuth();
+  const toast = useToast();
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [validationError, setValidationError] = useState({});
+  const [remember, setRemember] = useState(false);
 
-    const handleLogin = async () => {
-        const data = await loginUser(username, password);
+  const validateForm = () => {
+    const errors = {};
+    if (!username.trim()) errors.username = "Username is required";
+    if (!password) errors.password = "Password is required";
+    setValidationError(errors);
+    return Object.keys(errors).length === 0;
+  };
 
-        if (data.token) {
-            dispatch(login(data.token)); // ✅ Redux
-            navigate("/dashboard");
-        } else {
-            alert("Invalid credentials");
-        }
-    };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
 
-    return (
-        <div>
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100vh",
-                }}
-            >
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "10px",
-                        width: "250px",
-                    }}
-                >
-                    <h2 style={{ textAlign: "center" }}>Login</h2>
+    const res = await login(username, password);
 
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+    if (res.success) {
+      toast.success("Welcome back! Redirecting to Dashboard...");
+      setTimeout(() => navigate("/dashboard"), 1000);
+    } else {
+      toast.error(res.error || "Invalid username or password");
+    }
+  };
 
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-
-                    <button onClick={handleLogin}>Login</button>
-
-                    <button onClick={() => navigate("/register")}>
-                        Go to Register
-                    </button>
-                </div>
-            </div>
+  return (
+    <AuthLayout>
+      <Card className="login-card animate-fade-in-up" padding="md" variant="elevated">
+        <div className="login-card__head">
+          <div className="login-logo">🏛️</div>
+          <h2 className="login-title">Sign in to Court Diary</h2>
+          <p className="login-sub">Enter your credentials to access your practice workspace.</p>
         </div>
-    );
+
+        <form onSubmit={handleLogin} className="login-form" noValidate>
+          <Input
+            label="Username or Email"
+            type="text"
+            icon={FiUser}
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+              if (validationError.username) setValidationError(prev => ({ ...prev, username: null }));
+            }}
+            error={validationError.username}
+            required
+            autoComplete="username"
+          />
+
+          <Input
+            label="Password"
+            type="password"
+            icon={FiLock}
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (validationError.password) setValidationError(prev => ({ ...prev, password: null }));
+            }}
+            error={validationError.password}
+            required
+            autoComplete="current-password"
+          />
+
+          <div className="login-actions">
+            <label className="login-remember">
+              <input
+                type="checkbox"
+                checked={remember}
+                onChange={(e) => setRemember(e.target.checked)}
+                aria-label="Remember me"
+              />
+              <span>Remember me</span>
+            </label>
+
+            <button type="button" className="login-forgot" onClick={() => navigate('/forgot-password')}>
+              Forgot?
+            </button>
+          </div>
+
+          <Button type="submit" variant="primary" loading={isLoading} fullWidth>
+            Sign in
+          </Button>
+
+          <div className="login-divider">Don't have an account? <button type="button" className="link" onClick={() => navigate('/register')}>Create one</button></div>
+        </form>
+
+      </Card>
+    </AuthLayout>
+  );
 }
 
 export default Login;

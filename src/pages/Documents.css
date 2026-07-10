@@ -1,0 +1,101 @@
+/* =============================================
+   DOCUMENTS VAULT STYLES
+   ============================================= */
+
+.documents-header {
+  margin-bottom: var(--space-8);
+}
+
+.upload-dropzone {
+  border: 2px dashed var(--color-border-strong);
+  text-align: center;
+  margin-bottom: var(--space-6);
+  background: hsla(222, 40%, 8%, 0.25);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.upload-dropzone:hover {
+  border-color: var(--color-gold);
+  background: hsla(41, 55%, 55%, 0.02);
+}
+
+.upload-dropzone__icon {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+  animation: float 3s ease infinite;
+}
+
+.upload-dropzone h3 {
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.upload-dropzone p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Documents table */
+.docs-list-card {
+  overflow: hidden;
+}
+
+.doc-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.doc-table th {
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.doc-table td {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+.doc-row {
+  transition: background var(--transition-fast);
+}
+
+.doc-row:hover {
+  background: var(--color-bg-hover);
+}
+
+.doc-table-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: hsla(214, 95%, 65%, 0.1);
+  color: var(--color-blue);
+}
+
+.doc-table-name {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.doc-table-date,
+.doc-table-size {
+  color: var(--color-text-secondary);
+}
